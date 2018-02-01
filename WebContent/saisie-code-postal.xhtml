@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<f:view>
+	<h:head>
+		<title>Saisie du code postal</title>
+	</h:head>
+	<h:body>
+		<h:form id="formSaisieCodePostal">
+			<h:outputLabel value="Saisir un code postal : " id="lblcodePostal"></h:outputLabel>
+			<h:inputText id="txtCodePostal" value="#{beanVille.codePostal}"></h:inputText>
+			<h:commandButton id="btnValider" value="Valider" action="#{beanVille.rechercherVille()}"></h:commandButton>
+			<p>
+				<h:outputLabel value="#{beanVille.nom}" id="lblNom"></h:outputLabel>+
+			</p>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

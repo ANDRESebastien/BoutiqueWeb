@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<f:view>
+	<h:head>
+		<title>Authentification</title>
+	</h:head>
+	<h:body>
+		<h:form id="formUtilisateur">
+			<h:outputLabel id="lblMessage" binding="#{loginBean.message}"></h:outputLabel>
+			<h:panelGrid border="1" columns="3">
+				<h:outputText id="lblLogin" value="Login : "></h:outputText>
+				<h:inputText id="txtLogin" value="#{loginBean.login}" label="Login"
+					required="true">
+					<f:validator validatorId="controleLogin" />
+				</h:inputText>
+				<h:message for="txtLogin" />
+
+
+				<h:outputText id="lblMotDePasse" value="Mot de passe : "></h:outputText>
+				<h:inputSecret id="txtMotDePasse" value="#{loginBean.motDePasse}"
+					label="Mot de passe" required="true">
+					<f:validator validatorId="controleMotDePasse" />
+				</h:inputSecret>
+				<h:message for="txtMotDePasse" />
+				<h:commandButton value="Valider" id="btnValider"
+					action="#{loginBean.valider()}"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</h:body>
+</f:view>
+</html>
