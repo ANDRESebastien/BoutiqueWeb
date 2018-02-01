@@ -14,10 +14,10 @@ public class LoginBean {
 	public String valider() {
 		if (getLogin().equalsIgnoreCase("nom") && getMotDePasse().equalsIgnoreCase("mdp")) {
 			this.message.setValue("Succès.");
-			this.message.setStyle("color='blue'");
+			this.message.setStyle("color: blue");
 		} else {
 			this.message.setValue("Echec.");
-			this.message.setStyle("color='red'");
+			this.message.setStyle("color: red");
 		}
 		return null;
 	}

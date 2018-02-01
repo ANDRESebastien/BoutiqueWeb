@@ -12,11 +12,16 @@
 	</h:head>
 	<h:body>
 		<h:form id="formSaisieCodePostal">
+		<h:messages></h:messages>
 			<h:outputLabel value="Saisir un code postal : " id="lblcodePostal"></h:outputLabel>
-			<h:inputText id="txtCodePostal" value="#{beanVille.codePostal}"></h:inputText>
-			<h:commandButton id="btnValider" value="Valider" action="#{beanVille.rechercherVille()}"></h:commandButton>
+			<h:inputText id="txtCodePostal" label="Code Postal" value="#{beanVille.codePostal}" required="true">
+				<f:validateLength minimum="5" maximum="5" ></f:validateLength>
+			</h:inputText>
+			<h:message for="txtCodePostal"></h:message>
+			<h:commandButton id="btnValider" value="Valider"
+				action="#{beanVille.rechercherVille()}"></h:commandButton>
 			<p>
-				<h:outputLabel value="#{beanVille.nom}" id="lblNom"></h:outputLabel>+
+				<h:outputLabel value="#{beanVille.nom}" id="lblNom"></h:outputLabel>
 			</p>
 		</h:form>
 	</h:body>
