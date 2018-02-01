@@ -2,10 +2,22 @@
 
 #barre
 {
-	background-color:grey;
+	background-color: #D3D3D3;
+	foreground-color: #00008B;
 }
 
 #logoImage 
 {
 	width:5%;
+}
+
+
+#intitule 
+{ 
+	text-align: center;
+}
+
+#identification
+{
+	text-align: right;
 }

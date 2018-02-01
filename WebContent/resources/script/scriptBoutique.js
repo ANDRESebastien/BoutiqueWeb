@@ -1,3 +1,3 @@
 function bienvenue(utilisateur) {
-	alert("Bienvenue, " + utilisateur);
+	//alert("Bienvenue, " + utilisateur);
 }
