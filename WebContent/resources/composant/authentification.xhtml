@@ -1,0 +1,44 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:cc="http://java.sun.com/jsf/composite">
+
+<cc:interface>
+	<cc:attribute name="labelLogin"></cc:attribute>
+	<cc:attribute name="labelMotDePasse"></cc:attribute>
+	<cc:attribute name="labelValider"></cc:attribute>
+	<cc:attribute name="action"></cc:attribute>
+</cc:interface>
+
+
+<cc:implementation>
+	<h:form id="formUtilisateur">
+		<h:outputLabel id="lblMessage" binding="#{loginBean.message}"></h:outputLabel>
+		<h:panelGrid border="0" columns="3">
+			<h:outputText id="lblLogin" value="#{cc.attributes.labelLogin}"></h:outputText>
+			<h:inputText id="txtLogin" value="#{loginBean.login}" label="Login"
+				required="true">
+				<f:validator validatorId="controleLogin" />
+			</h:inputText>
+			<h:message for="txtLogin" />
+
+
+			<h:outputText id="lblMotDePasse"
+				value="#{cc.attributes.labelMotDePasse}"></h:outputText>
+			<h:inputSecret id="txtMotDePasse" value="#{loginBean.motDePasse}"
+				label="Mot de passe" required="true">
+				<f:validator validatorId="controleMotDePasse" />
+			</h:inputSecret>
+			<h:message for="txtMotDePasse" />
+
+			<h:commandButton value="#{cc.attributes.labelValider}"
+				id="btnValider" action="#{loginBean.connecter(listeClient)}"></h:commandButton>
+		</h:panelGrid>
+	</h:form>
+</cc:implementation>
+
+</html>

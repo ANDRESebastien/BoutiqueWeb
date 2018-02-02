@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<f:view>
+	<h:head>
+		<h:outputScript name="jsf.js" library="javax.faces" target="head"></h:outputScript>
+		<title>Ajout d'article</title>
+	</h:head>
+	<h:body>
+		<h:form id="formArticle">
+			<h:panelGrid border="0" columns="3">
+
+				<h:outputText id="lblNom" value="Nom : "></h:outputText>
+				<h:inputText id="txtNom" value="#{article.nom}" label="Nom"
+					required="true">
+					<f:ajax event="keyup" render="messageNom"
+						listener="#{article.ajaxNom}" />
+				</h:inputText>
+				<h:outputText id="messageNom" value="#{article.erreurNom}" />
+
+				<h:outputText id="lblDescription" value="Description : "></h:outputText>
+				<h:inputText id="txtDescription" value="#{article.description}"
+					label="Description">
+				</h:inputText>
+				<h:message for="txtDescription" />
+
+				<h:outputText id="lblPrix" value="Prix : "></h:outputText>
+				<h:inputText id="txtPrix" value="#{article.prix}" label="Prix">
+					<f:ajax event="click" render="messagePrix"
+						listener="#{article.ajaxPrix}" />
+				</h:inputText>
+				<h:outputText id="messagePrix" value="#{article.erreurPrix}" />
+
+				<h:commandButton value="Valider" id="btnValider"
+					action="#{article.valider()}"></h:commandButton>
+				<h:commandButton value="Annuler" id="btnAnnuler"
+					action="#{article.annuler()}" immediate="true"></h:commandButton>
+			</h:panelGrid>
+		</h:form>
+	</h:body>
+</f:view>
+</html>

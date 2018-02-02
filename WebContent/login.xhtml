@@ -8,6 +8,7 @@
 <f:view>
 	<h:head>
 		<title>Authentification</title>
+		<h:outputScript name="jsf.js" library="javax.faces" target="head"></h:outputScript>
 	</h:head>
 	<h:body>
 		<h:form id="formUtilisateur">
@@ -17,6 +18,7 @@
 				<h:inputText id="txtLogin" value="#{loginBean.login}" label="Login"
 					required="true">
 					<f:validator validatorId="controleLogin" />
+					<f:ajax event="keyup" render="lblMessage" listener="#{loginBean.evaluer}"/>
 				</h:inputText>
 				<h:message for="txtLogin" />
 
@@ -27,8 +29,11 @@
 					<f:validator validatorId="controleMotDePasse" />
 				</h:inputSecret>
 				<h:message for="txtMotDePasse" />
+
 				<h:commandButton value="Valider" id="btnValider"
-					action="#{loginBean.valider()}"></h:commandButton>
+					action="#{loginBean.connecter(listeClient)}"></h:commandButton>
+
+
 			</h:panelGrid>
 		</h:form>
 	</h:body>
