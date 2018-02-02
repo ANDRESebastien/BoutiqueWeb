@@ -30,7 +30,7 @@
 
 				<h:outputText id="lblPrix" value="Prix : "></h:outputText>
 				<h:inputText id="txtPrix" value="#{article.prix}" label="Prix">
-					<f:ajax event="click" render="messagePrix"
+					<f:ajax event="blur" render="@this messagePrix"
 						listener="#{article.ajaxPrix}" />
 				</h:inputText>
 				<h:outputText id="messagePrix" value="#{article.erreurPrix}" />

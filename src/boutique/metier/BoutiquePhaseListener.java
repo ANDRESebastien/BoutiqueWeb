@@ -8,7 +8,7 @@ public class BoutiquePhaseListener implements PhaseListener {
 
 	@Override
 	public void afterPhase(PhaseEvent event) {
-		System.out.println(" <<<<< Sortie dans la phase " + event.getPhaseId() + "\t<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
+		//System.out.println(" <<<<< Sortie dans la phase " + event.getPhaseId() + "\t<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<");
 		
 		String nom = event.getPhaseId().toString();
 		
@@ -20,7 +20,7 @@ public class BoutiquePhaseListener implements PhaseListener {
 
 	@Override
 	public void beforePhase(PhaseEvent event) {
-		System.out.println(" Entrée dans la phase " + event.getPhaseId() + " >>>>>>");
+		//System.out.println(" Entrée dans la phase " + event.getPhaseId() + " >>>>>>");
 	}
 
 	@Override

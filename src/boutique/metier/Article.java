@@ -2,7 +2,12 @@ package boutique.metier;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.component.html.HtmlInputText;
 import javax.faces.event.AjaxBehaviorEvent;
+
+import org.apache.openejb.client.corba.InstanceOf;
+
+import javassist.expr.Instanceof;
 
 @ManagedBean
 @RequestScoped
@@ -12,10 +17,11 @@ public class Article {
 
 	private double prix;
 	private String erreurPrix;
-	
+
 	private String description;
-	
+
 	public Article() {
+
 		setErreurNom("");
 		setErreurPrix("");
 	}
@@ -36,30 +42,38 @@ public class Article {
 		this.erreurPrix = erreurPrix;
 	}
 
-
-
-	private String valider() {
+	public String valider() {
 		return null;
 	}
 
-	private String annuler() {
+	public String annuler() {
 		return null;
 	}
 
-	private String ajaxPrix() {
-		return null;
+	public void ajaxNom(AjaxBehaviorEvent event) {
+		// controle supp 10 car
+		if (getNom().length() > 9) {
+			setErreurNom("Il y a trop de caractères (max 10)");
+		} else {
+			setErreurNom("");
+		}
 	}
 
-	private String ajaxPrix(AjaxBehaviorEvent event) {
-		return null;
-	}
+	public void ajaxPrix(AjaxBehaviorEvent event) {
+		// devient rouge si négatif ou non numérique
+		HtmlInputText txtPrix = (HtmlInputText) event.getSource();
+		txtPrix.setStyle("background-color: red;");
 
-	private String ajaxNom() {
-		return null;
-	}
+		txtPrix.setStyleClass("saisieKO");
+		System.out.println(this.getPrix());
 
-	private String ajaxNom(AjaxBehaviorEvent event) {
-		return null;
+		if (prix < 0) {
+			setErreurPrix("Le prix ne peut pas être négatif");
+		} else {
+			setErreurPrix("");
+			txtPrix.setStyle("background-color: none;");
+			txtPrix.setStyleClass("saisieOK");
+		}
 	}
 
 	public String getNom() {
